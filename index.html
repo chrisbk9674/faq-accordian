@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="faq-accordian.css" />
+    <title>Faq Accordian</title>
+  </head>
+  <body>
+    <div class="card">
+      <div class="icon-logo">
+        <img src="images/icon-star.svg" alt="" />
+        <h1>FAQs</h1>
+      </div>
+      <section class="question-group">
+        <div class="question-icon-wrap">
+          <h2>What is Frontend Mentor, and how will it help me?</h2>
+          <div class="icon-container">
+            <img src="images/icon-plus.svg" alt="Expand" class="icon-plus" />
+            <img
+              src="images/icon-minus.svg"
+              alt="Collapse"
+              class="icon-minus"
+            />
+          </div>
+        </div>
+
+        <p class="paragraph" style="max-height: none">
+          Frontend Mentor offers realistic coding challenges to help developers
+          improve their frontend coding skills with projects in HTML, CSS, and
+          JavaScript. It’s suitable for all levels and ideal for portfolio
+          building.
+        </p>
+        <hr class="custom-line" />
+      </section>
+      <section class="question-group">
+        <div class="question-icon-wrap">
+          <h2>Is Frontend Mentor free?</h2>
+          <div class="icon-container">
+            <img src="images/icon-plus.svg" alt="Expand" class="icon-plus" />
+            <img
+              src="images/icon-minus.svg"
+              alt="Collapse"
+              class="icon-minus"
+            />
+          </div>
+        </div>
+
+        <p class="paragraph">
+          Yes! Frontend Mentor offers both free and premium challenges. The free
+          challenges allow you to practice HTML, CSS, and JavaScript, while the
+          premium challenges provide more advanced projects and additional
+          resources.
+        </p>
+        <hr class="custom-line" />
+      </section>
+
+      <section class="question-group">
+        <div class="question-icon-wrap">
+          <h2>Can I use Frontend Mentor projects in my portfolio?</h2>
+          <div class="icon-container">
+            <img src="images/icon-plus.svg" alt="Expand" class="icon-plus" />
+            <img
+              src="images/icon-minus.svg"
+              alt="Collapse"
+              class="icon-minus"
+            />
+          </div>
+        </div>
+
+        <p class="paragraph">
+          Absolutely! Frontend Mentor encourages users to showcase their
+          completed projects in their portfolios. It’s a great way to
+          demonstrate your skills to potential employers and improve your
+          frontend development experience.
+        </p>
+        <hr class="custom-line" />
+      </section>
+      <section class="question-group">
+        <div class="question-icon-wrap">
+          <h2>How can I get help if I'm stuck on a project?</h2>
+          <div class="icon-container">
+            <img src="images/icon-plus.svg" alt="Expand" class="icon-plus" />
+            <img
+              src="images/icon-minus.svg"
+              alt="Collapse"
+              class="icon-minus"
+            />
+          </div>
+        </div>
+
+        <p class="paragraph last-paragraph">If you’re stuck, you can:</p>
+        <ul>
+          <li>Review the challenge requirements carefully.</li>
+          <li>
+            Search the
+            <a href="https://frontendmentor.io/forum" target="_blank"
+              >Frontend Mentor forum</a
+            >
+            for discussions on similar challenges.
+          </li>
+          <li>Ask for help in the community Discord or forum.</li>
+          <li>
+            Research solutions using online resources like
+            <a href="https://developer.mozilla.org/" target="_blank">MDN</a>,
+            <a href="https://css-tricks.com/" target="_blank">CSS Tricks</a>, or
+            <a href="https://stackoverflow.com/" target="_blank"
+              >Stack Overflow</a
+            >.
+          </li>
+          <li>Break down the problem and approach it step by step.</li>
+        </ul>
+      </section>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".question-group").forEach((group, index) => {
+          const question = group.querySelector(".question-icon-wrap");
+          const content = group.querySelectorAll("p, ul");
+          const plusIcon = question.querySelector(".icon-plus");
+          const minusIcon = question.querySelector(".icon-minus");
+
+          question.addEventListener("click", function () {
+            const isOpen = group.classList.contains("open");
+
+            if (isOpen) {
+              content.forEach((el) => (el.style.maxHeight = "0"));
+              plusIcon.style.opacity = "1";
+              minusIcon.style.opacity = "0";
+              group.classList.remove("open");
+            } else {
+              content.forEach(
+                (el) => (el.style.maxHeight = el.scrollHeight + "px")
+              );
+              plusIcon.style.opacity = "0";
+              minusIcon.style.opacity = "1";
+              group.classList.add("open");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
