@@ -121,32 +121,70 @@
       </section>
     </div>
     <script>
+      // Wait for the page to fully load before running the script
       document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll(".question-group").forEach((group, index) => {
+        // Select all FAQ sections (each containing a question and answer group)
+        document.querySelectorAll(".question-group").forEach((group) => {
+          // Select the clickable question area
           const question = group.querySelector(".question-icon-wrap");
+
+          // Select all content inside the group (paragraphs & lists)
           const content = group.querySelectorAll("p, ul");
+
+          // Select the plus and minus icons for visual feedback
           const plusIcon = question.querySelector(".icon-plus");
           const minusIcon = question.querySelector(".icon-minus");
 
+          // Add a click event listener to toggle the FAQ section
           question.addEventListener("click", function () {
+            // Check if the section is currently open
             const isOpen = group.classList.contains("open");
 
             if (isOpen) {
+              // Collapse the content
               content.forEach((el) => (el.style.maxHeight = "0"));
+
+              // Show the plus icon, hide the minus icon
               plusIcon.style.opacity = "1";
               minusIcon.style.opacity = "0";
+
+              // Remove the "open" class to visually close it
               group.classList.remove("open");
             } else {
+              // Expand the content dynamically by setting maxHeight
               content.forEach(
                 (el) => (el.style.maxHeight = el.scrollHeight + "px")
               );
+
+              // Show the minus icon, hide the plus icon
               plusIcon.style.opacity = "0";
               minusIcon.style.opacity = "1";
+
+              // Add the "open" class to visually open it
               group.classList.add("open");
             }
           });
         });
       });
+
+      // Ensure the first question is open with the correct icons on load
+      const firstQuestion = document.querySelector(
+        ".question-group:first-of-type"
+      );
+      const firstPlusIcon = firstQuestion.querySelector(".icon-plus");
+      const firstMinusIcon = firstQuestion.querySelector(".icon-minus");
+
+      // Set the first question as open
+      firstQuestion.classList.add("open");
+
+      // Show the minus icon, hide the plus icon
+      firstPlusIcon.style.opacity = "0";
+      firstMinusIcon.style.opacity = "1";
+
+      // Expand the first answer
+      firstQuestion
+        .querySelectorAll("p, ul")
+        .forEach((el) => (el.style.maxHeight = el.scrollHeight + "px"));
     </script>
   </body>
 </html>
