@@ -1,4 +1,4 @@
-# 🌟 FAQ Page Accordion – Frontend Mentor Challenge\*\*
+# 🌟 Fully Responsive FAQ Page Accordion\*\*
 
 <p align="center">
   <img src="design/desktop-design.jpg" alt="Blog Preview Card" width="50%">
